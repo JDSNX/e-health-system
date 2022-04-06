@@ -26,7 +26,7 @@ def get_all():
     return {"success": True, "result": resp.json(), "timestamp": time.time()}
 
 @application.route('/get_user', methods=['GET'])
-def get_user(ref_id):
+def get_user(ref_id=None):
     try:
         ref_id = str(request.args['ref_id'])
 
