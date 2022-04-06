@@ -1,10 +1,8 @@
 import json
 import time
 import requests
+
 from requests.structures import CaseInsensitiveDict
-from pytz import timezone
-from datetime import datetime
-import json
 
 
 from flask import Flask, request, render_template
