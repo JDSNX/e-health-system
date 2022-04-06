@@ -1,11 +1,8 @@
-from cgitb import html
 import json
 import time
 import requests
 
 from requests.structures import CaseInsensitiveDict
-
-
 from flask import Flask, request, render_template
 
 application = Flask(__name__)
