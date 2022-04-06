@@ -29,7 +29,7 @@ def get_all():
     return {"success": True, "result": resp.json(), "timestamp": time.time()}
 
 @application.route('/get_user', methods=['GET'])
-def get_user():
+def get_user(ref_id):
     try:
         ref_id = str(request.args['ref_id'])
 
@@ -48,6 +48,10 @@ def update_pass():
     try:
         ref_id = str(request.args['ref_id'])
         password = str(request.args['password'])
+
+        user = get_user(ref_id)
+        if user["success"] is False:
+            return {"success": False, "timestamp": time.time()}
 
         data = {"password": password}
         data = json.dumps(data, indent=4)
