@@ -43,7 +43,7 @@
 - return specific user
 
 **Parameters:**
-    - `ref_id` - id of the user 
+- `ref_id` - id of the user 
 
 ```python
 {
@@ -71,8 +71,8 @@
 - return specific user
 
 **Parameters:**
-    - `ref_id` - id of the user 
-    - `password` - new password
+- `ref_id` - id of the user 
+- `password` - new password
 
 ```python
 {
@@ -86,7 +86,7 @@
 - delete specific user
 
 **Parameters:**
-    - `ref_id` - id of the user 
+- `ref_id` - id of the user 
 
 ```python
 {
