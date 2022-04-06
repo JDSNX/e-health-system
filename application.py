@@ -1,3 +1,4 @@
+from cgitb import html
 import json
 import time
 import requests
@@ -15,7 +16,7 @@ headers = {"Content-Type": "application.json"}
 
 @application.route('/', methods=['GET'])
 def index():
-    return {"success": True, "timestamp": time.time()}
+    return render_template('index.html')
 
 @application.route('/get', methods=['GET'])
 def get_all():
@@ -52,6 +53,21 @@ def update_pass():
         data = json.dumps(data, indent=4)
 
         resp = requests.patch(url=f"{url}/users/{ref_id}.json", headers=headers, data=data)
+
+        if resp.json() is None:
+            return {"success": False, "timestamp": time.time()}
+
+    except Exception as e:
+        return {"success": False, "msg": e, "timestamp": time.time()}
+
+    return {"success": True, "result": resp.reason, "timestamp": time.time()}
+
+@application.route('/delete', methods=['GET'])
+def delete_user():
+    try:
+        ref_id = str(request.args['ref_id'])
+
+        resp = requests.delete(url=f"{url}/users/{ref_id}.json", headers=headers)
 
         if resp.json() is None:
             return {"success": False, "timestamp": time.time()}

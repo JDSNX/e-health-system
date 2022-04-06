@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <zero-md>
+        <!-- Write your markdown inside a `<script type="text/markdown">` tag -->
+        <script type="text/markdown">
+            # /get
+            - returns all users information
+            >```py
+            >"result": {
+            >    "K8IQ1": {
+            >        "first_name": "Test",
+            >        "last_name": "Man",
+            >        "middle_initial": "T",
+            >        "password": "madafapaka",
+            >        "ref_id": "K8IQ1",
+            >        "result": {
+            >            "BLOOD_OXYGEN_LEVEL": "ASDFGH",
+            >            "BODY_TEMPERATURE": "1234",
+            >            "ECG_RESULT": "ASDFG,"
+            >        },
+            >        "timestamp": 1648962733.597915
+            >    },
+            >    "NC4H0": {
+            >        "first_name": "Z18RK7F3C1",
+            >        "last_name": "2ELTKFJHEW",
+            >        "middle_initial": "8",
+            >        "password": "r3db3rr13s",
+            >        "ref_id": "NC4H0",
+            >        "result": {
+            >            "BLOOD_OXYGEN_LEVEL": "ASDFGH",
+            >            "BODY_TEMPERATURE": 265,
+            >            "ECG_RESULT": "ASDFG,"
+            >        },
+            >        "timestamp": 1648963013.316237
+            >    }
+            >},
+            >"success": true,
+            >"timestamp": 1649253394.396461
+            >```
+            
+            # /get_user
+            - return specific user
+            **Parameters:**
+                - `ref_id` - id of the user 
+            
+            >```py
+            >"result": {
+            >    "K8IQ1": {
+            >        "first_name": "Test",
+            >        "last_name": "Man",
+            >        "middle_initial": "T",
+            >        "password": "madafapaka",
+            >        "ref_id": "K8IQ1",
+            >        "result": {
+            >            "BLOOD_OXYGEN_LEVEL": "ASDFGH",
+            >            "BODY_TEMPERATURE": "1234",
+            >            "ECG_RESULT": "ASDFG,"
+            >        },
+            >        "timestamp": 1648962733.597915
+            >    },
+            >},
+            >"success": true,
+            >"timestamp": 1649253394.396461
+            >```
+            
+            # /update_pass
+            - return specific user
+            **Parameters:**
+                - `ref_id` - id of the user 
+                - `password` - new password
+            
+            >```py
+            >"result": "OK"
+            >"success": true,
+            >"timestamp": 1649253394.396461
+            >```
+            
+            # /delete
+            - delete specific user
+            **Parameters:**
+                - `ref_id` - id of the user 
+            
+            >```py
+            >"result": "OK"
+            >"success": true,
+            >"timestamp": 1649253394.396461
+            >```
+        </script>
+      </zero-md>
+</body>
+</html>
+
+<!-- Lightweight client-side loader that feature-detects and load polyfills only when necessary -->
+<script src="https://cdn.jsdelivr.net/npm/@webcomponents/webcomponentsjs@2/webcomponents-loader.min.js"></script>
+<!-- Load the element definition -->
+<script type="module" src="https://cdn.jsdelivr.net/gh/zerodevx/zero-md@1/src/zero-md.min.js"></script>
