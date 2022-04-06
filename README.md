@@ -1,4 +1,6 @@
-# /get
+# <center style="color:orange">💵 **API PARA SA THESIS SA ECE** 💵</center>
+
+## /get
 - returns all users information
 >```py
 >"result": {
@@ -33,7 +35,7 @@
 >"timestamp": 1649253394.396461
 >```
 
-# /get_user
+## /get_user
 - return specific user
 **Parameters:**
     - `ref_id` - id of the user 
@@ -58,7 +60,7 @@
 >"timestamp": 1649253394.396461
 >```
 
-# /update_pass
+## /update_pass
 - return specific user
 **Parameters:**
     - `ref_id` - id of the user 
@@ -70,7 +72,7 @@
 >"timestamp": 1649253394.396461
 >```
 
-# /delete
+## /delete
 - delete specific user
 **Parameters:**
     - `ref_id` - id of the user 
