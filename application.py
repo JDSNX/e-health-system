@@ -41,7 +41,7 @@ def get_user():
     except Exception as e:
         return {"success": False, "msg": e, "timestamp": time.time()}
 
-    return {"success": True, "result": resp.reason, "timestamp": time.time()}
+    return {"success": True, "result": resp.json(), "timestamp": time.time()}
 
 @application.route('/update_pass', methods=['GET'])
 def update_pass():
