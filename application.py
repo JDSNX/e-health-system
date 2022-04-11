@@ -50,7 +50,7 @@ def update_pass():
         if user["success"] is False:
             return {"success": False, "timestamp": time.time()}
 
-        data = {"password": password}
+        data = {"password": password, "timestamp": time.time()}
         data = json.dumps(data, indent=4)
 
         resp = requests.patch(url=f"{url}/users/{ref_id}.json", headers=headers, data=data)
