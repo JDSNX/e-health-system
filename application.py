@@ -40,7 +40,7 @@ def get_user(ref_id=None):
 
     return {"success": True, "result": resp.json(), "timestamp": time.time()}
 
-@application.route('/update_pass', methods=['GET'])
+@application.route('/update_pass', methods=['POST'])
 def update_pass():
     try:
         ref_id = str(request.args['ref_id'])
