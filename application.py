@@ -82,26 +82,19 @@ def update_pass():
 
 @application.route('/delete', methods=['GET'])
 def delete_user():
-    if request.method == 'GET':
-        return "Nuh-uh!"
+    try:
+        ref_id = str(request.args['ref_id'])
 
-    if request.method == 'POST':
-        try:
-            ref_id = str(request.args['ref_id'])
+        user = get_user(ref_id)
+        if user["success"] is False:
+            return {"success": False, "msg": "User not found!", "timestamp": time.time()}
 
-            user = get_user(ref_id)
-            if user["success"] is False:
-                return {"success": False, "msg": "User not found!", "timestamp": time.time()}
+        resp = requests.delete(url=f"{url}/users/{ref_id}.json", headers=headers)
 
-            resp = requests.delete(url=f"{url}/users/{ref_id}.json", headers=headers)
+    except Exception as e:
+        return {"success": False, "msg": e, "timestamp": time.time()}
 
-            if resp.json() is None:
-                return {"success": False, "timestamp": time.time()}
-
-        except Exception as e:
-            return {"success": False, "msg": e, "timestamp": time.time()}
-
-        return {"success": True, "result": resp.reason, "timestamp": time.time()}
+    return {"success": True, "result": resp.reason, "timestamp": time.time()}
 
 @application.route('/update_user', methods=['GET'])
 def update_user():
