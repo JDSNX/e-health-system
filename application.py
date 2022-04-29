@@ -3,7 +3,6 @@ import time
 import requests
 import uuid
 
-from generator import generator
 from requests.structures import CaseInsensitiveDict
 from flask import Flask, request, render_template
 
@@ -12,6 +11,9 @@ application = Flask(__name__)
 url = "https://ae-keys-1f1e9-default-rtdb.asia-southeast1.firebasedatabase.app/"
 headers = CaseInsensitiveDict
 headers = {"Content-Type": "application.json"}
+
+def generator():
+    return uuid.uuid4().hex.upper()[0:5]
 
 def check_user(ref_id=None):
     try:
