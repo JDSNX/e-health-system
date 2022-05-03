@@ -9,6 +9,8 @@ from flask import Flask, request, render_template
 application = Flask(__name__)
 
 url = "https://ae-keys-1f1e9-default-rtdb.asia-southeast1.firebasedatabase.app/"
+sms_api_key = "a1286f1c6ee9da48ab14f99186bb2ad4"
+sms_url = 'https://api.semaphore.co/api/v4/messages'
 headers = CaseInsensitiveDict
 headers = {"Content-Type": "application.json"}
 
@@ -174,3 +176,21 @@ def insert_user():
         return {"success": False, "msg": e, "timestamp": time.time()}
 
     return {"success": True, "result": resp.reason, "timestamp": time.time()}
+
+@application.route('/send', methods=['GET'])
+def send_sms():
+    try:
+        message = str(request.args['message'])
+        number = str(request.args['number'])
+
+        payload = {
+            'message': message,
+            'number': number,
+            'apikey': sms_api_key,
+        }
+        
+        response = requests.request('POST', sms_url, data = payload)
+    except Exception as e:
+        return {"success": False, "msg": e, "timestamp": time.time()}
+
+    return {"success": True, "result": json.dumps(response.text, indent=4), "timestamp": time.time()}
