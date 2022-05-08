@@ -211,5 +211,9 @@ def bt():
         data = json.dumps(data, indent=4)
 
         resp = requests.put(url=f"{url}/users/{ref_id}/result.json", headers=headers, data=data)
+
+        if resp.json() is None:
+            return {"success": False, "timestamp": time.time()}
+
     except Exception as e:
         return {"success": False, "msg": e, "timestamp": time.time()}
