@@ -205,6 +205,8 @@ def bt():
         data = {
             "result": {
                 "BODY_TEMPERATURE": body_temp,
+                "BLOOD_OXYGEN_LEVEL": "95$99",
+                "ECG_RESULT": "",
             },
             'timestamp': time.time(),
         }
@@ -231,6 +233,8 @@ def hr():
         data = {
             "result": {
                 "BLOOD_OXYGEN_LEVEL": spo2,
+                "BLOOD_OXYGEN_LEVEL": "95$99",
+                "ECG_RESULT": "",
             },
             'timestamp': time.time(),
         }
