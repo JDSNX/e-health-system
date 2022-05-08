@@ -196,44 +196,17 @@ def send_sms():
 
     return {"success": True, "result": json.dumps(response.text, indent=4), "timestamp": time.time()}
 
-@application.route('/body_temp', methods=['GET'])
-def bt():
+@application.route('/start_test', methods=['GET'])
+def tests():
     try:
         ref_id = str(request.args['ref_id'])
-        body_temp = str(request.args['result'])
+        body_temp = str(request.args['bt'])
+        spo2 = str(request.args['hr'])
 
         data = {
             "result": {
                 "BODY_TEMPERATURE": body_temp,
-                "BLOOD_OXYGEN_LEVEL": "95$99",
-                "ECG_RESULT": "",
-            },
-            'timestamp': time.time(),
-        }
-        
-        data = json.dumps(data, indent=4)
-
-        resp = requests.patch(url=f"{url}/users/{ref_id}.json", headers=headers, data=data)
-
-        if resp.json() is None:
-            return {"success": False, "timestamp": time.time()}
-
-    except Exception as e:
-        return {"success": False, "msg": e, "timestamp": time.time()}
-
-    return {"success": True, "result": resp.reason, "timestamp": time.time()}
-
-
-@application.route('/hr', methods=['GET'])
-def hr():
-    try:
-        ref_id = str(request.args['ref_id'])
-        spo2 = str(request.args['result'])
-
-        data = {
-            "result": {
                 "BLOOD_OXYGEN_LEVEL": spo2,
-                "BLOOD_OXYGEN_LEVEL": "95$99",
                 "ECG_RESULT": "",
             },
             'timestamp': time.time(),
