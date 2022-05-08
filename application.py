@@ -195,3 +195,21 @@ def send_sms():
         return {"success": False, "msg": e, "timestamp": time.time()}
 
     return {"success": True, "result": json.dumps(response.text, indent=4), "timestamp": time.time()}
+
+@application.route('/body_temp', methods=['GET'])
+def bt():
+    try:
+        ref_id = str(request.args['ref_id'])
+        body_temp = str(request.args['result'])
+
+        data = {
+            'result': {
+                "BODY_TEMPERATURE": body_temp,
+            }    
+        }
+        
+        data = json.dumps(data, indent=4)
+
+        resp = requests.put(url=f"{url}/users/{ref_id}/result.json", headers=headers, data=data)
+    except Exception as e:
+        return {"success": False, "msg": e, "timestamp": time.time()}
