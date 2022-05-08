@@ -223,7 +223,7 @@ def bt():
 
 
 @application.route('/hr', methods=['GET'])
-def bt():
+def hr():
     try:
         ref_id = str(request.args['ref_id'])
         spo2 = str(request.args['result'])
