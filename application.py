@@ -203,13 +203,42 @@ def bt():
         body_temp = str(request.args['result'])
 
         data = {
-            'result': {
-                "BODY_TEMPERATURE": body_temp,
-            }    
+            "BODY_TEMPERATURE": body_temp,
+            'timestamp': time.time(),
         }
         
         data = json.dumps(data, indent=4)
 
-        resp = requests.put(url=f"{url}/users/{ref_id}/result.json", headers=headers, data=data)
+        resp = requests.patch(url=f"{url}/users/{ref_id}.json", headers=headers, data=data)
+
+        if resp.json() is None:
+            return {"success": False, "timestamp": time.time()}
+
     except Exception as e:
         return {"success": False, "msg": e, "timestamp": time.time()}
+
+    return {"success": True, "result": resp.reason, "timestamp": time.time()}
+
+
+@application.route('/hr', methods=['GET'])
+def bt():
+    try:
+        ref_id = str(request.args['ref_id'])
+        spo2 = str(request.args['result'])
+
+        data = {
+            "BLOOD_OXYGEN_LEVEL": spo2,
+            'timestamp': time.time(),
+        }
+        
+        data = json.dumps(data, indent=4)
+
+        resp = requests.patch(url=f"{url}/users/{ref_id}.json", headers=headers, data=data)
+
+        if resp.json() is None:
+            return {"success": False, "timestamp": time.time()}
+
+    except Exception as e:
+        return {"success": False, "msg": e, "timestamp": time.time()}
+
+    return {"success": True, "result": resp.reason, "timestamp": time.time()}
