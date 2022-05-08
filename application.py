@@ -142,6 +142,7 @@ def insert_user():
         first_name = str(request.args['first_name'])
         last_name = str(request.args['last_name'])
         middle_initial = str(request.args['middle_initial'])
+        
         emergency_contact_number = str(request.args['emergency_contact_number'])
         emergency_contact_person = str(request.args['emergency_contact_person'])
         
@@ -175,7 +176,7 @@ def insert_user():
     except Exception as e:
         return {"success": False, "msg": e, "timestamp": time.time()}
 
-    return {"success": True, "result": resp.reason, "timestamp": time.time()}
+    return {"success": True, "result": resp.reason, "ref_id": ref_id, "timestamp": time.time()}
 
 @application.route('/send', methods=['GET'])
 def send_sms():
