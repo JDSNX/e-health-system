@@ -203,9 +203,7 @@ def bt():
         body_temp = str(request.args['result'])
 
         data = {
-            'result': {
-                "BODY_TEMPERATURE": body_temp,
-            } ,
+            "BODY_TEMPERATURE": body_temp,
             'timestamp': time.time(),
         }
         
@@ -229,9 +227,7 @@ def bt():
         spo2 = str(request.args['result'])
 
         data = {
-            'result': {
-                "BLOOD_OXYGEN_LEVEL": spo2,
-            } ,
+            "BLOOD_OXYGEN_LEVEL": spo2,
             'timestamp': time.time(),
         }
         
