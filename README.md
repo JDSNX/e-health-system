@@ -1,6 +1,3 @@
-# <center style="color:orange">💵 **API PARA SA THESIS SA ECE** 💵</center>
-
-
 # /get
 - returns all users information
 
