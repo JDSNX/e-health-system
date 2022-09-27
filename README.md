@@ -1,4 +1,4 @@
-# The researchers aim to present a solution for the families and loved ones of the patients to be updated even if they are not them by keeping them monitored and updated on their status.
+> The researchers aim to present a solution for the families and loved ones of the patients to be updated even if they are not them by keeping them monitored and updated on their status.
 
 # /get
 - returns all users information
